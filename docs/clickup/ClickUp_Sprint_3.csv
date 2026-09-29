@@ -1,0 +1,56 @@
+﻿"Task Name","Description","Status","Priority","Start Date","Due Date","Time Estimate","Tags","Sprint","Tipo","Codigo","Sprint Points","Dia"
+"Sprint Planning – Sprint 3","Selección de historias RF18–RF23 y tareas de documentación y entrega.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,ceremonia","Sprint 3","Ceremonia Scrum","","","Día 5 – Lunes 28 de septiembre"
+"RF18 – Registro de ingresos","Como administrador quiero registrar mensualidades y sesiones individuales, con el fin de llevar el control de los ingresos sin inconsistencias.
+
+Criterios de aceptación:
+1. El monto de una mensualidad no puede superar el saldo pendiente.
+2. El movimiento y la actualización del saldo deben confirmarse juntos o ninguno.
+3. Una sesión individual debe asociarse a un cliente.
+4. El sistema debe registrar método de pago y fecha no futura.
+
+Restricción: Solo se reciben mensualidades de contratos activos del cliente indicado.","complete","High","09/28/2026","09/28/2026","30m","sprint-3,historia","Sprint 3","Historia de usuario","RF18","5","Día 5 – Lunes 28 de septiembre"
+"RF19 – Registro de egresos","Como administrador quiero registrar los gastos del gimnasio, con el fin de conocer el balance real del negocio.
+
+Criterios de aceptación:
+1. El sistema debe exigir una categoría válida para egresos.
+2. El monto debe ser mayor a cero con máximo dos decimales.
+3. El egreso no puede asociarse a un contrato.
+
+Restricción: La fecha del egreso no puede ser futura.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF19","2","Día 5 – Lunes 28 de septiembre"
+"RF20 – Anulación de movimientos","Como administrador quiero anular un movimiento registrado por error, con el fin de corregir la información sin perder la trazabilidad.
+
+Criterios de aceptación:
+1. El sistema debe exigir un motivo de anulación.
+2. Un movimiento anulado no debe contarse en los balances.
+3. La anulación de una mensualidad debe restaurar el saldo del contrato.
+
+Restricción: Los movimientos nunca se borran; no se anulan mensualidades de contratos cerrados.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF20","3","Día 5 – Lunes 28 de septiembre"
+"RF21 – Balance financiero por fechas","Como administrador quiero consultar el balance en un rango de fechas, con el fin de conocer la rentabilidad del periodo.
+
+Criterios de aceptación:
+1. El sistema debe mostrar total de ingresos, egresos y balance.
+2. El sistema debe desglosar por categoría con cantidad y total.
+3. La fecha final no puede ser anterior a la inicial.
+
+Restricción: Solo se consideran movimientos en estado registrado.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF21","3","Día 5 – Lunes 28 de septiembre"
+"RF22 – Balance financiero por cliente","Como administrador quiero consultar el estado financiero de un cliente, con el fin de conocer lo pagado y lo pendiente.
+
+Criterios de aceptación:
+1. El sistema debe mostrar ingresos y egresos asociados al cliente.
+2. El sistema debe mostrar el saldo pendiente total de contratos activos.
+3. El sistema debe listar cada contrato con precio, pagado y saldo.
+
+Restricción: Consulta de solo lectura.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF22","3","Día 5 – Lunes 28 de septiembre"
+"RF23 – Historial y auditoría","Como administrador quiero que las operaciones importantes queden registradas, con el fin de rastrear lo ocurrido en el sistema.
+
+Criterios de aceptación:
+1. Cada transacción debe mostrar en consola si hubo COMMIT o ROLLBACK.
+2. Los eventos se guardan solo después de confirmar la transacción.
+3. El sistema debe mostrar el historial de comandos con su resultado.
+
+Restricción: Un fallo de auditoría no debe interrumpir la operación principal.","complete","Low","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF23","2","Día 5 – Lunes 28 de septiembre"
+"T09 – Pruebas unitarias y datos de demostración","tests/ con node:test (validaciones, factory, estados) y scripts/seed.js.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,tecnica","Sprint 3","Tarea técnica","T09","","Día 5 – Lunes 28 de septiembre"
+"T10 – README técnico","Descripción, instalación, estructura, SOLID, patrones, transacciones y créditos.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,tecnica","Sprint 3","Tarea técnica","T10","","Día 5 – Lunes 28 de septiembre"
+"T11 – Documento de planeación Scrum (PDF)","Documento según la plantilla con requerimientos, historias, metodología, evidencias y conclusiones.","complete","High","09/28/2026","09/28/2026","30m","sprint-3,tecnica","Sprint 3","Tarea técnica","T11","","Día 5 – Lunes 28 de septiembre"
+"T12 – Video explicativo (máx. 7 min)","Guion, grabación de principios, patrones y demo por consola; enlace en el README.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,tecnica","Sprint 3","Tarea técnica","T12","","Día 5 – Lunes 28 de septiembre"
+"Sprint Review y Retrospective – Sprint 3","Revisión final del producto contra la rúbrica y retrospectiva del proyecto.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,ceremonia","Sprint 3","Ceremonia Scrum","","","Día 5 – Lunes 28 de septiembre"

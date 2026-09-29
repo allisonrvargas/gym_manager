@@ -1,0 +1,221 @@
+﻿"Task Name","Description","Status","Priority","Start Date","Due Date","Time Estimate","Tags","Sprint","Tipo","Codigo","Sprint Points","Dia"
+"Sprint Planning – Sprint 1","Lectura del enunciado y la rúbrica, creación del backlog en ClickUp, redacción y estimación de historias de usuario, objetivo del sprint.","complete","Normal","09/22/2026","09/22/2026","30m","sprint-1,ceremonia","Sprint 1","Ceremonia Scrum","","","Día 1 – Martes 22 de septiembre"
+"T01 – Inicializar repositorio y entorno","npm init con ES Modules, dependencias (mongodb, inquirer, chalk, dotenv, dayjs, cli-table3, ora), .gitignore, .env.example y docker-compose con MongoDB replica set.","complete","High","09/22/2026","09/22/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T01","","Día 1 – Martes 22 de septiembre"
+"T02 – Configuración y conexión Singleton","config/env.js con dotenv; config/Database.js (Singleton), verificación de replica set e índices únicos.","complete","High","09/22/2026","09/22/2026","45m","sprint-1,tecnica","Sprint 1","Tarea técnica","T02","","Día 1 – Martes 22 de septiembre"
+"T03 – Validador genérico y errores","utils/Validator.js (tipo, requerido, enum, rangos, decimales, patrones, arreglos y objetos anidados) y jerarquía de errores.","complete","High","09/22/2026","09/22/2026","45m","sprint-1,tecnica","Sprint 1","Tarea técnica","T03","","Día 1 – Martes 22 de septiembre"
+"T04 – Modelos con validaciones","models/BaseModel.js y los modelos Cliente, PlanEntrenamiento, Contrato, Seguimiento, PlanNutricional, RegistroAlimento y Movimiento.","complete","High","09/22/2026","09/22/2026","1h","sprint-1,tecnica","Sprint 1","Tarea técnica","T04","","Día 1 – Martes 22 de septiembre"
+"Daily – 23/09","Bitácora: ayer se terminaron configuración y modelos; hoy repositorios, transacciones, menú, clientes y planes; sin bloqueos.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,ceremonia","Sprint 1","Ceremonia Scrum","","","Día 2 – Miércoles 23 de septiembre"
+"T05 – Patrón Repository","repositories/BaseRepository.js con soporte de sesiones y repositorios específicos por colección.","complete","High","09/23/2026","09/23/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T05","","Día 2 – Miércoles 23 de septiembre"
+"T06 – TransactionManager y Observer","utils/TransactionManager.js (commit, abort y reintentos), events/EventBus.js, ConsolaObserver y AuditoriaObserver.","complete","High","09/23/2026","09/23/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T06","","Día 2 – Miércoles 23 de septiembre"
+"T07 – Patrón Command y menú","Command, CommandInvoker, MenuCommand (Composite), Selectores, utils/ui.js y utils/prompts.js; config/container.js (inyección de dependencias).","complete","High","09/23/2026","09/23/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T07","","Día 2 – Miércoles 23 de septiembre"
+"RF01 – Registro de clientes","Como entrenador quiero registrar a un cliente con sus datos personales y objetivo, con el fin de iniciar su gestión dentro del gimnasio.
+
+Criterios de aceptación:
+1. El sistema debe validar que nombre y apellido contengan solo letras (2 a 60 caracteres).
+2. El sistema debe validar el formato del email, el documento (6 a 12 dígitos) y el teléfono (7 a 15 dígitos).
+3. El sistema debe rechazar documentos o emails ya registrados.
+4. El sistema debe aceptar únicamente edades entre 14 y 100 años.
+5. El sistema debe confirmar el registro con un mensaje de éxito.
+
+Restricción: No se puede registrar un cliente con un documento o email que ya exista en la base de datos.","complete","High","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF01","3","Día 2 – Miércoles 23 de septiembre"
+"RF02 – Consulta de clientes","Como entrenador quiero listar mis clientes y ver el detalle de cada uno, con el fin de conocer su información y sus contratos.
+
+Criterios de aceptación:
+1. El sistema debe mostrar los clientes en una tabla ordenada por apellido.
+2. El sistema debe mostrar el número de planes activos de cada cliente.
+3. El sistema debe mostrar los contratos del cliente con su estado y saldo pendiente.
+4. El sistema debe informar cuando no existan clientes registrados.
+
+Restricción: La consulta es de solo lectura; no modifica información.","complete","High","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF02","2","Día 2 – Miércoles 23 de septiembre"
+"RF03 – Actualización de clientes","Como entrenador quiero actualizar los datos de un cliente, con el fin de mantener su información al día.
+
+Criterios de aceptación:
+1. El sistema debe mostrar los valores actuales como valores por defecto.
+2. El sistema debe aplicar las mismas validaciones del registro.
+3. El sistema debe impedir asignar un documento o email que pertenezca a otro cliente.
+4. El sistema debe registrar la fecha de actualización.
+
+Restricción: No se pueden modificar los campos inmutables ""planes"" y ""creadoEn"".","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF03","2","Día 2 – Miércoles 23 de septiembre"
+"RF04 – Eliminación de clientes","Como entrenador quiero eliminar un cliente que ya no asiste, con el fin de depurar la base de datos sin dejar información huérfana.
+
+Criterios de aceptación:
+1. El sistema debe pedir confirmación antes de eliminar.
+2. El sistema debe impedir la eliminación si el cliente tiene contratos activos.
+3. El sistema debe eliminar en una sola transacción el cliente y sus datos de seguimiento.
+4. El sistema debe informar cuántos registros fueron eliminados.
+
+Restricción: Solo se eliminan clientes sin contratos activos; los registros financieros nunca se eliminan.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF04","3","Día 2 – Miércoles 23 de septiembre"
+"RF05 – Creación de planes de entrenamiento","Como entrenador quiero crear planes con nombre, duración, metas, nivel y precio, con el fin de ofrecerlos a mis clientes.
+
+Criterios de aceptación:
+1. El sistema debe exigir entre 1 y 104 semanas de duración.
+2. El sistema debe exigir entre 1 y 10 metas físicas.
+3. El sistema debe permitir solo los niveles principiante, intermedio y avanzado.
+4. El sistema debe impedir nombres de plan duplicados.
+5. El plan debe crearse en estado activo.
+
+Restricción: El precio mensual debe ser mayor o igual a cero con máximo dos decimales.","complete","High","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF05","3","Día 2 – Miércoles 23 de septiembre"
+"RF06 – Gestión de planes de entrenamiento","Como entrenador quiero listar, actualizar, inactivar y eliminar planes, con el fin de mantener actualizada mi oferta.
+
+Criterios de aceptación:
+1. El sistema debe listar planes con nivel, duración, precio, metas y estado.
+2. El sistema debe permitir cambiar el estado entre activo e inactivo.
+3. El sistema debe impedir eliminar planes que tengan contratos asociados.
+4. Los contratos existentes deben conservar su precio y duración originales.
+
+Restricción: Un plan con contratos (activos o históricos) no se elimina: se inactiva.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF06","3","Día 2 – Miércoles 23 de septiembre"
+"Sprint Review y Retrospective – Sprint 1","Demostración por consola del CRUD de clientes y planes; retrospectiva del sprint.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,ceremonia","Sprint 1","Ceremonia Scrum","","","Día 2 – Miércoles 23 de septiembre"
+"Sprint Planning – Sprint 2","Selección de historias RF07–RF17, estimación y objetivo del sprint.","complete","Normal","09/24/2026","09/24/2026","15m","sprint-2,ceremonia","Sprint 2","Ceremonia Scrum","","","Día 3 – Jueves 24 de septiembre"
+"T08 – Máquina de estados del contrato","utils/MaquinaEstadosContrato.js con las transiciones válidas (activo, finalizado, cancelado, renovado).","complete","High","09/24/2026","09/24/2026","15m","sprint-2,tecnica","Sprint 2","Tarea técnica","T08","","Día 3 – Jueves 24 de septiembre"
+"RF07 – Asignación de planes con contrato automático","Como entrenador quiero asignar uno o varios planes a uno o varios clientes, con el fin de que se genere automáticamente el contrato de cada asignación.
+
+Criterios de aceptación:
+1. El sistema debe generar el contrato automáticamente sin que el usuario lo cree manualmente.
+2. El contrato debe incluir condiciones, duración, precio, fecha de inicio y fecha de fin.
+3. El sistema debe permitir asignar un plan a varios clientes y varios planes a un cliente.
+4. Si una sola asignación falla, no debe crearse ningún contrato (rollback).
+5. El sistema debe mostrar los contratos generados.
+
+Restricción: Un cliente no puede tener dos contratos activos del mismo plan; no se asignan planes inactivos.","complete","High","09/24/2026","09/24/2026","1h 15m","sprint-2,historia","Sprint 2","Historia de usuario","RF07","8","Día 3 – Jueves 24 de septiembre"
+"RF08 – Consulta de contratos","Como entrenador quiero consultar los contratos por estado, con el fin de conocer la situación de cada cliente.
+
+Criterios de aceptación:
+1. El sistema debe permitir filtrar por estados activo, finalizado, cancelado y renovado.
+2. El sistema debe mostrar precio, monto pagado y saldo pendiente.
+3. El sistema debe mostrar el historial de estados con fecha y motivo.
+
+Restricción: Los contratos no se editan manualmente; solo cambian mediante renovar, finalizar, cancelar o registrar pagos.","complete","High","09/24/2026","09/24/2026","15m","sprint-2,historia","Sprint 2","Historia de usuario","RF08","2","Día 3 – Jueves 24 de septiembre"
+"RF09 – Renovación de planes","Como entrenador quiero renovar el plan de un cliente, con el fin de darle continuidad sin crear todo desde cero.
+
+Criterios de aceptación:
+1. El sistema debe permitir renovar contratos activos o finalizados.
+2. El nuevo contrato debe referenciar al contrato anterior.
+3. El sistema debe impedir la renovación si existe saldo pendiente.
+4. El contrato anterior debe quedar en estado renovado.
+
+Restricción: No se renuevan contratos cancelados ni ya renovados.","complete","Normal","09/24/2026","09/24/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF09","3","Día 3 – Jueves 24 de septiembre"
+"RF10 – Finalización de planes","Como entrenador quiero finalizar el plan de un cliente que lo completó, con el fin de cerrar el ciclo del contrato.
+
+Criterios de aceptación:
+1. El sistema debe permitir finalizar solo contratos activos.
+2. El sistema debe impedir finalizar contratos con saldo pendiente.
+3. El sistema debe registrar el cambio en el historial de estados.
+
+Restricción: El saldo pendiente debe ser cero para finalizar.","complete","Normal","09/24/2026","09/24/2026","15m","sprint-2,historia","Sprint 2","Historia de usuario","RF10","2","Día 3 – Jueves 24 de septiembre"
+"RF11 – Cancelación de planes con rollback","Como entrenador quiero cancelar el plan de un cliente, con el fin de que su seguimiento y datos asociados se eliminen de forma consistente.
+
+Criterios de aceptación:
+1. El sistema debe advertir y pedir confirmación y motivo.
+2. El sistema debe eliminar el seguimiento y la nutrición del contrato.
+3. El sistema debe marcar el contrato como cancelado con fecha y motivo.
+4. Si ocurre un error, ningún dato debe quedar modificado (rollback).
+5. Los pagos ya realizados deben conservarse.
+
+Restricción: Solo se cancelan contratos activos; el estado cancelado es terminal.","complete","High","09/24/2026","09/24/2026","45m","sprint-2,historia","Sprint 2","Historia de usuario","RF11","8","Día 3 – Jueves 24 de septiembre"
+"Daily – 25/09","Bitácora: ayer quedó el ciclo de vida del contrato; hoy seguimiento físico y nutrición; bloqueo resuelto: las transacciones exigen replica set.","complete","Normal","09/25/2026","09/25/2026","15m","sprint-2,ceremonia","Sprint 2","Ceremonia Scrum","","","Día 4 – Viernes 25 de septiembre"
+"RF12 – Registro de avance semanal","Como entrenador quiero registrar el peso, grasa corporal, medidas, fotos y comentarios de mi cliente cada semana, con el fin de medir su progreso.
+
+Criterios de aceptación:
+1. El sistema debe validar peso (25 a 350 kg), grasa (2 a 70 %) y medidas (10 a 300 cm).
+2. El sistema debe aceptar fotos como URL o ruta de imagen (.jpg, .png, .webp).
+3. El sistema debe permitir un solo registro por semana y contrato.
+4. La fecha debe estar dentro de la vigencia del contrato y no ser futura.
+
+Restricción: Solo se registran avances en contratos activos.","complete","High","09/25/2026","09/25/2026","45m","sprint-2,historia","Sprint 2","Historia de usuario","RF12","5","Día 4 – Viernes 25 de septiembre"
+"RF13 – Visualización del progreso cronológico","Como entrenador quiero ver el progreso de mi cliente en orden cronológico, con el fin de evaluar la efectividad del plan.
+
+Criterios de aceptación:
+1. El sistema debe ordenar los registros por semana.
+2. El sistema debe mostrar la variación de peso y grasa respecto al registro anterior.
+3. El sistema debe mostrar un gráfico de evolución y el cambio total.
+
+Restricción: Consulta de solo lectura.","complete","High","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF13","3","Día 4 – Viernes 25 de septiembre"
+"RF14 – Eliminación de avances con rollback","Como entrenador quiero eliminar un registro de avance erróneo, con el fin de corregir el seguimiento sin romper la consistencia del plan.
+
+Criterios de aceptación:
+1. El sistema debe impedir eliminar avances de contratos no activos.
+2. El sistema debe impedir eliminar la medición inicial (semana 1) si existen semanas posteriores.
+3. El contador de seguimientos del contrato debe coincidir con los registros reales.
+4. El sistema debe informar el rollback cuando la eliminación se revierta.
+
+Restricción: El historial de contratos cerrados es inmutable.","complete","Normal","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF14","5","Día 4 – Viernes 25 de septiembre"
+"RF15 – Creación de plan de alimentación","Como entrenador quiero crear un plan de alimentación para mi cliente, asociado a su plan de entrenamiento, con el fin de complementar sus resultados.
+
+Criterios de aceptación:
+1. El plan debe quedar asociado al cliente, al contrato y al plan de entrenamiento.
+2. Las calorías objetivo deben estar entre 800 y 6000 kcal.
+3. Solo debe existir un plan nutricional activo por contrato.
+
+Restricción: Solo se crean planes nutricionales sobre contratos activos.","complete","High","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF15","3","Día 4 – Viernes 25 de septiembre"
+"RF16 – Registro de alimentos por día","Como entrenador quiero registrar los alimentos que consume mi cliente cada día, con el fin de controlar su ingesta calórica.
+
+Criterios de aceptación:
+1. El sistema debe permitir registrar varios alimentos seguidos.
+2. Las calorías deben estar entre 0 y 5000 por registro.
+3. La fecha debe estar dentro de la vigencia del contrato y no ser futura.
+
+Restricción: El plan nutricional y el contrato asociado deben estar activos.","complete","High","09/25/2026","09/25/2026","15m","sprint-2,historia","Sprint 2","Historia de usuario","RF16","3","Día 4 – Viernes 25 de septiembre"
+"RF17 – Reporte nutricional semanal","Como entrenador quiero consultar un reporte semanal de alimentación, con el fin de compararlo con el objetivo calórico del cliente.
+
+Criterios de aceptación:
+1. El reporte debe mostrar los siete días de la semana consultada.
+2. El reporte debe desglosar calorías por comida.
+3. El reporte debe mostrar total semanal, promedio diario y días registrados.
+
+Restricción: Los días se agrupan según la zona horaria configurada en .env.","complete","Normal","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF17","5","Día 4 – Viernes 25 de septiembre"
+"Sprint Review y Retrospective – Sprint 2","Demostración de contrato automático, cancelación con rollback y reporte nutricional; retrospectiva.","complete","Normal","09/25/2026","09/25/2026","15m","sprint-2,ceremonia","Sprint 2","Ceremonia Scrum","","","Día 4 – Viernes 25 de septiembre"
+"Sprint Planning – Sprint 3","Selección de historias RF18–RF23 y tareas de documentación y entrega.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,ceremonia","Sprint 3","Ceremonia Scrum","","","Día 5 – Lunes 28 de septiembre"
+"RF18 – Registro de ingresos","Como administrador quiero registrar mensualidades y sesiones individuales, con el fin de llevar el control de los ingresos sin inconsistencias.
+
+Criterios de aceptación:
+1. El monto de una mensualidad no puede superar el saldo pendiente.
+2. El movimiento y la actualización del saldo deben confirmarse juntos o ninguno.
+3. Una sesión individual debe asociarse a un cliente.
+4. El sistema debe registrar método de pago y fecha no futura.
+
+Restricción: Solo se reciben mensualidades de contratos activos del cliente indicado.","complete","High","09/28/2026","09/28/2026","30m","sprint-3,historia","Sprint 3","Historia de usuario","RF18","5","Día 5 – Lunes 28 de septiembre"
+"RF19 – Registro de egresos","Como administrador quiero registrar los gastos del gimnasio, con el fin de conocer el balance real del negocio.
+
+Criterios de aceptación:
+1. El sistema debe exigir una categoría válida para egresos.
+2. El monto debe ser mayor a cero con máximo dos decimales.
+3. El egreso no puede asociarse a un contrato.
+
+Restricción: La fecha del egreso no puede ser futura.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF19","2","Día 5 – Lunes 28 de septiembre"
+"RF20 – Anulación de movimientos","Como administrador quiero anular un movimiento registrado por error, con el fin de corregir la información sin perder la trazabilidad.
+
+Criterios de aceptación:
+1. El sistema debe exigir un motivo de anulación.
+2. Un movimiento anulado no debe contarse en los balances.
+3. La anulación de una mensualidad debe restaurar el saldo del contrato.
+
+Restricción: Los movimientos nunca se borran; no se anulan mensualidades de contratos cerrados.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF20","3","Día 5 – Lunes 28 de septiembre"
+"RF21 – Balance financiero por fechas","Como administrador quiero consultar el balance en un rango de fechas, con el fin de conocer la rentabilidad del periodo.
+
+Criterios de aceptación:
+1. El sistema debe mostrar total de ingresos, egresos y balance.
+2. El sistema debe desglosar por categoría con cantidad y total.
+3. La fecha final no puede ser anterior a la inicial.
+
+Restricción: Solo se consideran movimientos en estado registrado.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF21","3","Día 5 – Lunes 28 de septiembre"
+"RF22 – Balance financiero por cliente","Como administrador quiero consultar el estado financiero de un cliente, con el fin de conocer lo pagado y lo pendiente.
+
+Criterios de aceptación:
+1. El sistema debe mostrar ingresos y egresos asociados al cliente.
+2. El sistema debe mostrar el saldo pendiente total de contratos activos.
+3. El sistema debe listar cada contrato con precio, pagado y saldo.
+
+Restricción: Consulta de solo lectura.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF22","3","Día 5 – Lunes 28 de septiembre"
+"RF23 – Historial y auditoría","Como administrador quiero que las operaciones importantes queden registradas, con el fin de rastrear lo ocurrido en el sistema.
+
+Criterios de aceptación:
+1. Cada transacción debe mostrar en consola si hubo COMMIT o ROLLBACK.
+2. Los eventos se guardan solo después de confirmar la transacción.
+3. El sistema debe mostrar el historial de comandos con su resultado.
+
+Restricción: Un fallo de auditoría no debe interrumpir la operación principal.","complete","Low","09/28/2026","09/28/2026","15m","sprint-3,historia","Sprint 3","Historia de usuario","RF23","2","Día 5 – Lunes 28 de septiembre"
+"T09 – Pruebas unitarias y datos de demostración","tests/ con node:test (validaciones, factory, estados) y scripts/seed.js.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,tecnica","Sprint 3","Tarea técnica","T09","","Día 5 – Lunes 28 de septiembre"
+"T10 – README técnico","Descripción, instalación, estructura, SOLID, patrones, transacciones y créditos.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,tecnica","Sprint 3","Tarea técnica","T10","","Día 5 – Lunes 28 de septiembre"
+"T11 – Documento de planeación Scrum (PDF)","Documento según la plantilla con requerimientos, historias, metodología, evidencias y conclusiones.","complete","High","09/28/2026","09/28/2026","30m","sprint-3,tecnica","Sprint 3","Tarea técnica","T11","","Día 5 – Lunes 28 de septiembre"
+"T12 – Video explicativo (máx. 7 min)","Guion, grabación de principios, patrones y demo por consola; enlace en el README.","complete","High","09/28/2026","09/28/2026","15m","sprint-3,tecnica","Sprint 3","Tarea técnica","T12","","Día 5 – Lunes 28 de septiembre"
+"Sprint Review y Retrospective – Sprint 3","Revisión final del producto contra la rúbrica y retrospectiva del proyecto.","complete","Normal","09/28/2026","09/28/2026","15m","sprint-3,ceremonia","Sprint 3","Ceremonia Scrum","","","Día 5 – Lunes 28 de septiembre"

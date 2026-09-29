@@ -1,0 +1,67 @@
+﻿"Task Name","Description","Status","Priority","Start Date","Due Date","Time Estimate","Tags","Sprint","Tipo","Codigo","Sprint Points","Dia"
+"Sprint Planning – Sprint 1","Lectura del enunciado y la rúbrica, creación del backlog en ClickUp, redacción y estimación de historias de usuario, objetivo del sprint.","complete","Normal","09/22/2026","09/22/2026","30m","sprint-1,ceremonia","Sprint 1","Ceremonia Scrum","","","Día 1 – Martes 22 de septiembre"
+"T01 – Inicializar repositorio y entorno","npm init con ES Modules, dependencias (mongodb, inquirer, chalk, dotenv, dayjs, cli-table3, ora), .gitignore, .env.example y docker-compose con MongoDB replica set.","complete","High","09/22/2026","09/22/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T01","","Día 1 – Martes 22 de septiembre"
+"T02 – Configuración y conexión Singleton","config/env.js con dotenv; config/Database.js (Singleton), verificación de replica set e índices únicos.","complete","High","09/22/2026","09/22/2026","45m","sprint-1,tecnica","Sprint 1","Tarea técnica","T02","","Día 1 – Martes 22 de septiembre"
+"T03 – Validador genérico y errores","utils/Validator.js (tipo, requerido, enum, rangos, decimales, patrones, arreglos y objetos anidados) y jerarquía de errores.","complete","High","09/22/2026","09/22/2026","45m","sprint-1,tecnica","Sprint 1","Tarea técnica","T03","","Día 1 – Martes 22 de septiembre"
+"T04 – Modelos con validaciones","models/BaseModel.js y los modelos Cliente, PlanEntrenamiento, Contrato, Seguimiento, PlanNutricional, RegistroAlimento y Movimiento.","complete","High","09/22/2026","09/22/2026","1h","sprint-1,tecnica","Sprint 1","Tarea técnica","T04","","Día 1 – Martes 22 de septiembre"
+"Daily – 23/09","Bitácora: ayer se terminaron configuración y modelos; hoy repositorios, transacciones, menú, clientes y planes; sin bloqueos.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,ceremonia","Sprint 1","Ceremonia Scrum","","","Día 2 – Miércoles 23 de septiembre"
+"T05 – Patrón Repository","repositories/BaseRepository.js con soporte de sesiones y repositorios específicos por colección.","complete","High","09/23/2026","09/23/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T05","","Día 2 – Miércoles 23 de septiembre"
+"T06 – TransactionManager y Observer","utils/TransactionManager.js (commit, abort y reintentos), events/EventBus.js, ConsolaObserver y AuditoriaObserver.","complete","High","09/23/2026","09/23/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T06","","Día 2 – Miércoles 23 de septiembre"
+"T07 – Patrón Command y menú","Command, CommandInvoker, MenuCommand (Composite), Selectores, utils/ui.js y utils/prompts.js; config/container.js (inyección de dependencias).","complete","High","09/23/2026","09/23/2026","30m","sprint-1,tecnica","Sprint 1","Tarea técnica","T07","","Día 2 – Miércoles 23 de septiembre"
+"RF01 – Registro de clientes","Como entrenador quiero registrar a un cliente con sus datos personales y objetivo, con el fin de iniciar su gestión dentro del gimnasio.
+
+Criterios de aceptación:
+1. El sistema debe validar que nombre y apellido contengan solo letras (2 a 60 caracteres).
+2. El sistema debe validar el formato del email, el documento (6 a 12 dígitos) y el teléfono (7 a 15 dígitos).
+3. El sistema debe rechazar documentos o emails ya registrados.
+4. El sistema debe aceptar únicamente edades entre 14 y 100 años.
+5. El sistema debe confirmar el registro con un mensaje de éxito.
+
+Restricción: No se puede registrar un cliente con un documento o email que ya exista en la base de datos.","complete","High","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF01","3","Día 2 – Miércoles 23 de septiembre"
+"RF02 – Consulta de clientes","Como entrenador quiero listar mis clientes y ver el detalle de cada uno, con el fin de conocer su información y sus contratos.
+
+Criterios de aceptación:
+1. El sistema debe mostrar los clientes en una tabla ordenada por apellido.
+2. El sistema debe mostrar el número de planes activos de cada cliente.
+3. El sistema debe mostrar los contratos del cliente con su estado y saldo pendiente.
+4. El sistema debe informar cuando no existan clientes registrados.
+
+Restricción: La consulta es de solo lectura; no modifica información.","complete","High","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF02","2","Día 2 – Miércoles 23 de septiembre"
+"RF03 – Actualización de clientes","Como entrenador quiero actualizar los datos de un cliente, con el fin de mantener su información al día.
+
+Criterios de aceptación:
+1. El sistema debe mostrar los valores actuales como valores por defecto.
+2. El sistema debe aplicar las mismas validaciones del registro.
+3. El sistema debe impedir asignar un documento o email que pertenezca a otro cliente.
+4. El sistema debe registrar la fecha de actualización.
+
+Restricción: No se pueden modificar los campos inmutables ""planes"" y ""creadoEn"".","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF03","2","Día 2 – Miércoles 23 de septiembre"
+"RF04 – Eliminación de clientes","Como entrenador quiero eliminar un cliente que ya no asiste, con el fin de depurar la base de datos sin dejar información huérfana.
+
+Criterios de aceptación:
+1. El sistema debe pedir confirmación antes de eliminar.
+2. El sistema debe impedir la eliminación si el cliente tiene contratos activos.
+3. El sistema debe eliminar en una sola transacción el cliente y sus datos de seguimiento.
+4. El sistema debe informar cuántos registros fueron eliminados.
+
+Restricción: Solo se eliminan clientes sin contratos activos; los registros financieros nunca se eliminan.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF04","3","Día 2 – Miércoles 23 de septiembre"
+"RF05 – Creación de planes de entrenamiento","Como entrenador quiero crear planes con nombre, duración, metas, nivel y precio, con el fin de ofrecerlos a mis clientes.
+
+Criterios de aceptación:
+1. El sistema debe exigir entre 1 y 104 semanas de duración.
+2. El sistema debe exigir entre 1 y 10 metas físicas.
+3. El sistema debe permitir solo los niveles principiante, intermedio y avanzado.
+4. El sistema debe impedir nombres de plan duplicados.
+5. El plan debe crearse en estado activo.
+
+Restricción: El precio mensual debe ser mayor o igual a cero con máximo dos decimales.","complete","High","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF05","3","Día 2 – Miércoles 23 de septiembre"
+"RF06 – Gestión de planes de entrenamiento","Como entrenador quiero listar, actualizar, inactivar y eliminar planes, con el fin de mantener actualizada mi oferta.
+
+Criterios de aceptación:
+1. El sistema debe listar planes con nivel, duración, precio, metas y estado.
+2. El sistema debe permitir cambiar el estado entre activo e inactivo.
+3. El sistema debe impedir eliminar planes que tengan contratos asociados.
+4. Los contratos existentes deben conservar su precio y duración originales.
+
+Restricción: Un plan con contratos (activos o históricos) no se elimina: se inactiva.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,historia","Sprint 1","Historia de usuario","RF06","3","Día 2 – Miércoles 23 de septiembre"
+"Sprint Review y Retrospective – Sprint 1","Demostración por consola del CRUD de clientes y planes; retrospectiva del sprint.","complete","Normal","09/23/2026","09/23/2026","15m","sprint-1,ceremonia","Sprint 1","Ceremonia Scrum","","","Día 2 – Miércoles 23 de septiembre"

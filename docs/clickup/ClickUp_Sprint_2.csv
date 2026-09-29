@@ -1,0 +1,100 @@
+﻿"Task Name","Description","Status","Priority","Start Date","Due Date","Time Estimate","Tags","Sprint","Tipo","Codigo","Sprint Points","Dia"
+"Sprint Planning – Sprint 2","Selección de historias RF07–RF17, estimación y objetivo del sprint.","complete","Normal","09/24/2026","09/24/2026","15m","sprint-2,ceremonia","Sprint 2","Ceremonia Scrum","","","Día 3 – Jueves 24 de septiembre"
+"T08 – Máquina de estados del contrato","utils/MaquinaEstadosContrato.js con las transiciones válidas (activo, finalizado, cancelado, renovado).","complete","High","09/24/2026","09/24/2026","15m","sprint-2,tecnica","Sprint 2","Tarea técnica","T08","","Día 3 – Jueves 24 de septiembre"
+"RF07 – Asignación de planes con contrato automático","Como entrenador quiero asignar uno o varios planes a uno o varios clientes, con el fin de que se genere automáticamente el contrato de cada asignación.
+
+Criterios de aceptación:
+1. El sistema debe generar el contrato automáticamente sin que el usuario lo cree manualmente.
+2. El contrato debe incluir condiciones, duración, precio, fecha de inicio y fecha de fin.
+3. El sistema debe permitir asignar un plan a varios clientes y varios planes a un cliente.
+4. Si una sola asignación falla, no debe crearse ningún contrato (rollback).
+5. El sistema debe mostrar los contratos generados.
+
+Restricción: Un cliente no puede tener dos contratos activos del mismo plan; no se asignan planes inactivos.","complete","High","09/24/2026","09/24/2026","1h 15m","sprint-2,historia","Sprint 2","Historia de usuario","RF07","8","Día 3 – Jueves 24 de septiembre"
+"RF08 – Consulta de contratos","Como entrenador quiero consultar los contratos por estado, con el fin de conocer la situación de cada cliente.
+
+Criterios de aceptación:
+1. El sistema debe permitir filtrar por estados activo, finalizado, cancelado y renovado.
+2. El sistema debe mostrar precio, monto pagado y saldo pendiente.
+3. El sistema debe mostrar el historial de estados con fecha y motivo.
+
+Restricción: Los contratos no se editan manualmente; solo cambian mediante renovar, finalizar, cancelar o registrar pagos.","complete","High","09/24/2026","09/24/2026","15m","sprint-2,historia","Sprint 2","Historia de usuario","RF08","2","Día 3 – Jueves 24 de septiembre"
+"RF09 – Renovación de planes","Como entrenador quiero renovar el plan de un cliente, con el fin de darle continuidad sin crear todo desde cero.
+
+Criterios de aceptación:
+1. El sistema debe permitir renovar contratos activos o finalizados.
+2. El nuevo contrato debe referenciar al contrato anterior.
+3. El sistema debe impedir la renovación si existe saldo pendiente.
+4. El contrato anterior debe quedar en estado renovado.
+
+Restricción: No se renuevan contratos cancelados ni ya renovados.","complete","Normal","09/24/2026","09/24/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF09","3","Día 3 – Jueves 24 de septiembre"
+"RF10 – Finalización de planes","Como entrenador quiero finalizar el plan de un cliente que lo completó, con el fin de cerrar el ciclo del contrato.
+
+Criterios de aceptación:
+1. El sistema debe permitir finalizar solo contratos activos.
+2. El sistema debe impedir finalizar contratos con saldo pendiente.
+3. El sistema debe registrar el cambio en el historial de estados.
+
+Restricción: El saldo pendiente debe ser cero para finalizar.","complete","Normal","09/24/2026","09/24/2026","15m","sprint-2,historia","Sprint 2","Historia de usuario","RF10","2","Día 3 – Jueves 24 de septiembre"
+"RF11 – Cancelación de planes con rollback","Como entrenador quiero cancelar el plan de un cliente, con el fin de que su seguimiento y datos asociados se eliminen de forma consistente.
+
+Criterios de aceptación:
+1. El sistema debe advertir y pedir confirmación y motivo.
+2. El sistema debe eliminar el seguimiento y la nutrición del contrato.
+3. El sistema debe marcar el contrato como cancelado con fecha y motivo.
+4. Si ocurre un error, ningún dato debe quedar modificado (rollback).
+5. Los pagos ya realizados deben conservarse.
+
+Restricción: Solo se cancelan contratos activos; el estado cancelado es terminal.","complete","High","09/24/2026","09/24/2026","45m","sprint-2,historia","Sprint 2","Historia de usuario","RF11","8","Día 3 – Jueves 24 de septiembre"
+"Daily – 25/09","Bitácora: ayer quedó el ciclo de vida del contrato; hoy seguimiento físico y nutrición; bloqueo resuelto: las transacciones exigen replica set.","complete","Normal","09/25/2026","09/25/2026","15m","sprint-2,ceremonia","Sprint 2","Ceremonia Scrum","","","Día 4 – Viernes 25 de septiembre"
+"RF12 – Registro de avance semanal","Como entrenador quiero registrar el peso, grasa corporal, medidas, fotos y comentarios de mi cliente cada semana, con el fin de medir su progreso.
+
+Criterios de aceptación:
+1. El sistema debe validar peso (25 a 350 kg), grasa (2 a 70 %) y medidas (10 a 300 cm).
+2. El sistema debe aceptar fotos como URL o ruta de imagen (.jpg, .png, .webp).
+3. El sistema debe permitir un solo registro por semana y contrato.
+4. La fecha debe estar dentro de la vigencia del contrato y no ser futura.
+
+Restricción: Solo se registran avances en contratos activos.","complete","High","09/25/2026","09/25/2026","45m","sprint-2,historia","Sprint 2","Historia de usuario","RF12","5","Día 4 – Viernes 25 de septiembre"
+"RF13 – Visualización del progreso cronológico","Como entrenador quiero ver el progreso de mi cliente en orden cronológico, con el fin de evaluar la efectividad del plan.
+
+Criterios de aceptación:
+1. El sistema debe ordenar los registros por semana.
+2. El sistema debe mostrar la variación de peso y grasa respecto al registro anterior.
+3. El sistema debe mostrar un gráfico de evolución y el cambio total.
+
+Restricción: Consulta de solo lectura.","complete","High","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF13","3","Día 4 – Viernes 25 de septiembre"
+"RF14 – Eliminación de avances con rollback","Como entrenador quiero eliminar un registro de avance erróneo, con el fin de corregir el seguimiento sin romper la consistencia del plan.
+
+Criterios de aceptación:
+1. El sistema debe impedir eliminar avances de contratos no activos.
+2. El sistema debe impedir eliminar la medición inicial (semana 1) si existen semanas posteriores.
+3. El contador de seguimientos del contrato debe coincidir con los registros reales.
+4. El sistema debe informar el rollback cuando la eliminación se revierta.
+
+Restricción: El historial de contratos cerrados es inmutable.","complete","Normal","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF14","5","Día 4 – Viernes 25 de septiembre"
+"RF15 – Creación de plan de alimentación","Como entrenador quiero crear un plan de alimentación para mi cliente, asociado a su plan de entrenamiento, con el fin de complementar sus resultados.
+
+Criterios de aceptación:
+1. El plan debe quedar asociado al cliente, al contrato y al plan de entrenamiento.
+2. Las calorías objetivo deben estar entre 800 y 6000 kcal.
+3. Solo debe existir un plan nutricional activo por contrato.
+
+Restricción: Solo se crean planes nutricionales sobre contratos activos.","complete","High","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF15","3","Día 4 – Viernes 25 de septiembre"
+"RF16 – Registro de alimentos por día","Como entrenador quiero registrar los alimentos que consume mi cliente cada día, con el fin de controlar su ingesta calórica.
+
+Criterios de aceptación:
+1. El sistema debe permitir registrar varios alimentos seguidos.
+2. Las calorías deben estar entre 0 y 5000 por registro.
+3. La fecha debe estar dentro de la vigencia del contrato y no ser futura.
+
+Restricción: El plan nutricional y el contrato asociado deben estar activos.","complete","High","09/25/2026","09/25/2026","15m","sprint-2,historia","Sprint 2","Historia de usuario","RF16","3","Día 4 – Viernes 25 de septiembre"
+"RF17 – Reporte nutricional semanal","Como entrenador quiero consultar un reporte semanal de alimentación, con el fin de compararlo con el objetivo calórico del cliente.
+
+Criterios de aceptación:
+1. El reporte debe mostrar los siete días de la semana consultada.
+2. El reporte debe desglosar calorías por comida.
+3. El reporte debe mostrar total semanal, promedio diario y días registrados.
+
+Restricción: Los días se agrupan según la zona horaria configurada en .env.","complete","Normal","09/25/2026","09/25/2026","30m","sprint-2,historia","Sprint 2","Historia de usuario","RF17","5","Día 4 – Viernes 25 de septiembre"
+"Sprint Review y Retrospective – Sprint 2","Demostración de contrato automático, cancelación con rollback y reporte nutricional; retrospectiva.","complete","Normal","09/25/2026","09/25/2026","15m","sprint-2,ceremonia","Sprint 2","Ceremonia Scrum","","","Día 4 – Viernes 25 de septiembre"
