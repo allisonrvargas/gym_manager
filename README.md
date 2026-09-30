@@ -2,12 +2,18 @@
 
 Aplicación de línea de comandos en **Node.js** para que un entrenador personal o gimnasio gestione de forma integral a sus **clientes**, **planes de entrenamiento**, **contratos**, **seguimiento físico**, **nutrición** y **finanzas**, con persistencia en **MongoDB** usando el driver oficial y **transacciones reales**.
 
-> 🎥 **Video de presentación:** [ENLACE AL VIDEO](https://drive.google.com/drive/folders/1zbrFOXl5XpliZLcQYnjxDwk0e4WxWL_P?usp=drive_link) *(máx. 7 minutos)*
->  **Planeación Scrum (PDF):** [`docs/Planeacion_Scrum.pdf`](docs/Planeacion_Scrum.pdf)
->  **Tablero Scrum (ClickUp):** [ENLACE AL TABLERO](https://app.clickup.com/...)
+> **Video de presentación:**  [Link del video](https://drive.google.com/drive/folders/1zbrFOXl5XpliZLcQYnjxDwk0e4WxWL_P?usp=drive_link) 
 
 ---
+>  **Planeación Scrum (PDF):** [`docs/Planeacion_Scrum.pdf`](docs/Planeacion_Scrum.pdf)
+---
+>  **Tablero Scrum:** [Sprint 1](https://sharing.clickup.com/90141028649/l/h/6-901421642420-1/1b46339d8618cb6)
+>  **Tablero Scrum:** [Sprint 2](https://sharing.clickup.com/90141028649/l/h/6-901421649577-1/b46ad968e8d8090)
+>  **Tablero Scrum:** [Sprint 3](https://sharing.clickup.com/90141028649/l/h/6-901421650139-1/de82e1f245e158c)
 
+
+
+---
 ##  Tabla de contenido
 1. [Descripción](#-descripción)
 2. [Funcionalidades](#-funcionalidades)
@@ -95,7 +101,7 @@ npm run seed:reset
 npm start
 ```
 
-Navegue con las flechas ↑ ↓, seleccione con **Enter** y marque opciones múltiples con **Espacio**. Cada transacción muestra en consola si fue confirmada ( COMMIT) o revertida (↩ ROLLBACK).
+Navegue con las flechas ↑ ↓, seleccione con **Enter** y marque opciones múltiples con **Espacio**. Cada transacción muestra en consola si fue confirmada ( COMMIT) o revertida (ROLLBACK).
 
 **Flujo sugerido de demostración:**
 1. `Planes → Crear plan` · 2. `Clientes → Registrar cliente` · 3. `Planes → Asignar plan a clientes` (se genera el contrato) · 4. `Seguimiento → Registrar avance` · 5. `Finanzas → Registrar ingreso (mensualidad)` · 6. `Contratos → Cancelar plan` (rollback del seguimiento).
