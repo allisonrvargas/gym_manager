@@ -1,19 +1,14 @@
-# MongoDB como Replica Set de un solo nodo: requisito para usar transacciones.
+version: '3.8'
+
 services:
   mongo:
-    image: mongo:7
+    image: mongo:6
     container_name: gym-mongo
-    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
     ports:
-      - "27017:27017"
+      - "27018:27017"
+    command: ["--replSet", "rs0", "--bind_ip_all"]
     volumes:
-      - mongo_data:/data/db
-    healthcheck:
-      # Inicializa el replica set la primera vez que arranca el contenedor
-      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'localhost:27017'}]}) }" | mongosh --port 27017 --quiet
-      interval: 5s
-      timeout: 30s
-      retries: 30
+      - gym_data:/data/db
 
 volumes:
-  mongo_data:
+  gym_data:
