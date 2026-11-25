@@ -11,6 +11,8 @@ const mostrarBalance = (b) => {
   ui.tabla(['Tipo', 'Categoría', 'Cantidad', 'Total'], b.porCategoria.map((c) => [c.tipo, c.categoria, c.cantidad, dinero(c.total)]));
 };
 
+export { ReporteFinancieroCommand } from './ReporteFinancieroCommand.js';
+
 export class RegistrarIngresoCommand extends Command {
   constructor(ctx) { super('Registrar ingreso (pago)', ctx); }
 

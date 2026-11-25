@@ -23,7 +23,7 @@ export function construirMenuPrincipal(servicios, invoker) {
     menu('Seguimiento físico', S.RegistrarAvanceCommand, S.VerProgresoCommand, S.EliminarAvanceCommand),
     menu('Nutrición', N.CrearPlanNutricionalCommand, N.RegistrarAlimentoCommand, N.ReporteNutricionalCommand),
     menu('Finanzas', F.RegistrarIngresoCommand, F.RegistrarEgresoCommand, F.ListarMovimientosCommand,
-      F.AnularMovimientoCommand, F.BalancePorFechasCommand, F.BalancePorClienteCommand),
+      F.AnularMovimientoCommand, F.BalancePorFechasCommand, F.BalancePorClienteCommand, F.ReporteFinancieroCommand),
     new HistorialSesionCommand(ctx, invoker),
   );
 }
