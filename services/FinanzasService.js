@@ -101,6 +101,30 @@ export class FinanzasService {
     return this.#armarBalance(await this.movimientoRepo.balance(filtro));
   }
 
+  /** Reporte de un mes (opcionalmente de un solo cliente), con el desglose por categoría. No cuenta movimientos anulados. */
+  async generarReporteMensual({ mes, anio, clienteId = null }) {
+    const m = Number(mes);
+    const a = Number(anio);
+    if (!Number.isInteger(m) || m < 1 || m > 12) throw new BusinessRuleError('El mes debe ser un número entre 1 y 12');
+    if (!Number.isInteger(a) || a < 2000 || a > 2100) throw new BusinessRuleError('El año debe estar entre 2000 y 2100');
+
+    const inicio = dayjs(new Date(a, m - 1, 1)).startOf('month');
+    const filtro = { fecha: { $gte: inicio.toDate(), $lte: inicio.endOf('month').toDate() } };
+    if (clienteId) filtro.clienteId = toObjectId(clienteId);
+
+    const balance = this.#armarBalance(await this.movimientoRepo.balance(filtro));
+    const desglose = { ingresos: {}, egresos: {} };
+    for (const c of balance.porCategoria) desglose[c.tipo === 'ingreso' ? 'ingresos' : 'egresos'][c.categoria] = c.total;
+
+    return {
+      periodo: `${String(m).padStart(2, '0')}/${a}`,
+      totalIngresos: balance.ingresos,
+      totalEgresos: balance.egresos,
+      balanceNeto: balance.balance,
+      desglose,
+    };
+  }
+
   async balancePorCliente(clienteId) {
     const _id = toObjectId(clienteId);
     const balance = this.#armarBalance(await this.movimientoRepo.balance({ clienteId: _id }));

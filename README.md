@@ -43,7 +43,7 @@ Gym Manager CLI centraliza la operación de un gimnasio en una sola herramienta 
 - Generar **automáticamente un contrato** cada vez que se asigna un plan.
 - Registrar avances semanales (peso, grasa, medidas, fotos, comentarios) y ver el progreso cronológico.
 - Crear planes de alimentación, registrar alimentos diarios y consultar reportes semanales.
-- Llevar ingresos y egresos, con balances por fechas y por cliente.
+- Llevar ingresos y egresos, con balances por fechas y por cliente, y un **reporte financiero mensual** (consolidado o de un cliente) que se puede exportar a JSON o CSV.
 
 Todas las operaciones críticas se ejecutan en **transacciones de MongoDB**: si algo falla, se hace *rollback* y los datos quedan exactamente como estaban.
 
@@ -56,7 +56,7 @@ Todas las operaciones críticas se ejecutan en **transacciones de MongoDB**: si 
 |  **Contratos** | Generación automática al asignar, ver detalle e historial, **renovar**, **finalizar**, **cancelar con rollback** |
 |  **Seguimiento** | Registrar avance semanal, progreso cronológico con variaciones y gráfico, eliminar con rollback si rompe la consistencia |
 |  **Nutrición** | Plan de alimentación por cliente/contrato, registro de alimentos por día y comida, reporte semanal vs. objetivo |
-|  **Finanzas** | Ingresos (mensualidades, sesiones), egresos (servicios, suplementos, gastos), anulación, balance por fechas y por cliente |
+|  **Finanzas** | Ingresos (mensualidades, sesiones), egresos (servicios, suplementos, gastos), anulación, balance por fechas y por cliente, reporte mensual con exportación JSON/CSV |
 |  **Sistema** | Historial de comandos de la sesión, auditoría de eventos en la colección `auditoria` |
 
 ##  Requisitos
@@ -210,6 +210,7 @@ Además, `BaseModel.sanitize` descarta campos no declarados y `buildUpdate` impi
 | Renovar | `ContratoService.renovar` | Cierra el contrato actual y genera el nuevo de forma atómica. |
 | Finalizar | `ContratoService.finalizar` | Cambia estado y desasocia solo si el saldo es cero. |
 | Registrar pago | `FinanzasService.registrarIngreso` | Inserta el movimiento y descuenta el saldo del contrato en la misma transacción. |
+| Reporte mensual | `FinanzasService.generarReporteMensual` | Totales y desglose por categoría de un mes (sin contar movimientos anulados), consolidado o por cliente. Valida mes y año. |
 | Anular pago | `FinanzasService.anular` | Marca el movimiento anulado y devuelve el saldo al contrato. |
 | Registrar avance | `SeguimientoService.registrar` | Inserta el avance y actualiza el contador del contrato. |
 | **Eliminar avance** | `SeguimientoService.eliminar` | Borra y luego verifica invariantes; si alguna se rompe → **rollback** y el registro reaparece. |
@@ -256,6 +257,6 @@ activo ──► finalizado ──► renovado
 npm test
 ```
 
-Pruebas unitarias con `node:test` (sin dependencias) para validaciones de modelos, generación de contratos y máquina de estados.
+Pruebas unitarias con `node:test` (sin dependencias ni base de datos): validaciones de modelos, generación de contratos, máquina de estados, el reporte financiero mensual (límites del mes, años bisiestos, filtro por cliente, entradas inválidas) y la estructura del repositorio (sin archivos que solo difieren en mayúsculas y sin imports rotos).
 
 
