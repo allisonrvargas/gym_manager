@@ -1,5 +1,7 @@
 #  Gym Manager CLI  
 
+[![CI](https://github.com/allisonrvargas/gym_manager/actions/workflows/ci.yml/badge.svg)](https://github.com/allisonrvargas/gym_manager/actions/workflows/ci.yml)
+
 Aplicación de línea de comandos en **Node.js** para que un entrenador personal o gimnasio gestione de forma integral a sus **clientes**, **planes de entrenamiento**, **contratos**, **seguimiento físico**, **nutrición** y **finanzas**, con persistencia en **MongoDB** usando el driver oficial y **transacciones reales**.
 
 > **Video de presentación:**  [Link del video](https://drive.google.com/drive/folders/1zbrFOXl5XpliZLcQYnjxDwk0e4WxWL_P?usp=drive_link) 
